@@ -1,0 +1,7 @@
+competing_model,gb_mae_mean_std,competing_mae_mean_std,test_used,t_statistic,p_value,cohen_d_effect_size,statistically_significant
+Linear Regression,8.53 ± 1.00,11.38 ± 1.39,Paired t-test,+9.9435,0.0010,4.4469,YES (p < 0.05)
+Ridge Regression,8.53 ± 1.00,11.40 ± 1.40,Paired t-test,+9.8322,0.0010,4.3971,YES (p < 0.05)
+LASSO Regression,8.53 ± 1.00,9.90 ± 1.81,Paired t-test,+2.8517,0.0200,1.2753,YES (p < 0.05)
+ElasticNet Regression,8.53 ± 1.00,11.29 ± 1.29,Paired t-test,+11.6140,0.0010,5.1939,YES (p < 0.05)
+Support Vector Regression (SVR),8.53 ± 1.00,11.55 ± 1.46,Paired t-test,+8.1316,0.0010,3.6366,YES (p < 0.05)
+Random Forest Regressor,8.53 ± 1.00,12.52 ± 1.36,Paired t-test,+12.6808,0.0010,5.6710,YES (p < 0.05)

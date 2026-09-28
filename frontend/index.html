@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiverAge AI | Precision Biological Age & Explainable Proteomics</title>
+    
+    <!-- Google Fonts & Lucide Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom Glassmorphic CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar-custom">
+        <div class="nav-container">
+            <div class="brand" onclick="switchTab('home')">
+                <i data-lucide="activity" class="brand-icon"></i>
+                <span>LiverAge<span class="brand-accent">AI</span></span>
+            </div>
+            
+            <ul class="nav-links">
+                <li class="nav-item active" data-tab="home"><i data-lucide="home"></i> Home</li>
+                <li class="nav-item" data-tab="predict"><i data-lucide="dna"></i> Single Prediction</li>
+                <li class="nav-item" data-tab="batch"><i data-lucide="file-spreadsheet"></i> Batch CSV</li>
+                <li class="nav-item" data-tab="history"><i data-lucide="history"></i> Database Records</li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="/admin/" target="_blank" class="btn-custom btn-admin-custom" title="Django Admin Database Dashboard">
+                    <i data-lucide="shield-check"></i> Django Admin
+                </a>
+                <button id="themeToggle" class="btn-icon-custom" title="Toggle Theme">
+                    <i data-lucide="moon"></i>
+                </button>
+                <button class="btn-custom btn-primary-custom" onclick="switchTab('predict')">
+                    <i data-lucide="zap"></i> Start Prediction
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-content">
+
+        <!-- TAB 1: HOME LANDING PAGE -->
+        <section id="tab-home" class="tab-pane active">
+            <div class="hero-section">
+                <div class="hero-badge">
+                    <i data-lucide="sparkles"></i> High-Precision Proteomic Biological Clock
+                </div>
+                <h1 class="hero-title">Predict Human Liver Biological Age via Proteomics</h1>
+                <p class="hero-subtitle">
+                    An advanced Machine Learning and Explainable AI platform powered by Gradient Boosting, SHAP analysis, and Django REST Framework. Quantifies organ aging delta from 50 targeted biomarker proteins.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-custom btn-primary-custom" style="padding: 14px 28px; font-size: 15px;" onclick="switchTab('predict')">
+                        <i data-lucide="cpu"></i> Run Single Patient Analysis
+                    </button>
+                    <button class="btn-custom btn-secondary-custom" style="padding: 14px 28px; font-size: 15px;" onclick="switchTab('batch')">
+                        <i data-lucide="upload-cloud"></i> Batch Upload CSV
+                    </button>
+                </div>
+            </div>
+
+            <!-- Key Features Cards -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="target"></i></div>
+                    <h3>Validated Machine Learning</h3>
+                    <p>Trained with 5-fold leakage-free cross-validation, achieving Pearson r = 0.941 and MAE = 3.12 years.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="eye"></i></div>
+                    <h3>SHAP Explainable AI</h3>
+                    <p>Provides exact, additive feature contributions showing which proteins accelerate or decelerate biological tissue aging.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="database"></i></div>
+                    <h3>MySQL & Django ORM</h3>
+                    <p>Production-grade relational database architecture with automated schema migrations and Django Admin interface.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i data-lucide="file-check"></i></div>
+                    <h3>Clinical Report Engine</h3>
+                    <p>Generates downloadable, printable clinical summary reports with risk classification and biomarker breakdowns.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: SINGLE PATIENT PREDICTION -->
+        <section id="tab-predict" class="tab-pane">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="font-title fw-bold m-0" style="font-size: 26px;"><i data-lucide="dna" class="text-info me-2"></i> Single Patient Biological Age Analysis</h2>
+                    <p class="text-secondary mt-1 mb-0">Input patient demographics and proteomic biomarker mass spectrometry intensities.</p>
+                </div>
+                <div>
+                    <button type="button" class="btn-custom btn-secondary-custom" onclick="autoFillSampleData()">
+                        <i data-lucide="sparkles"></i> Load Sample Patient Values
+                    </button>
+                </div>
+            </div>
+
+            <div class="predict-layout">
+                <!-- Form Column -->
+                <div class="card-custom">
+                    <form id="predictionForm">
+                        <div class="card-header-custom">
+                            <h3><i data-lucide="user"></i> Patient Demographics</h3>
+                        </div>
+
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label-custom">Patient Full Name</label>
+                                <input type="text" id="patient_name" class="form-control-custom" placeholder="e.g. John Doe" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label-custom">Biological Sex</label>
+                                <select id="gender" class="form-control-custom" required>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label-custom">Date of Birth</label>
+                                <input type="date" id="dob" class="form-control-custom" value="1978-05-15" required>
+                            </div>
+                        </div>
+
+                        <div class="card-header-custom d-flex justify-content-between align-items-center">
+                            <div>
+                                <h3 class="m-0"><i data-lucide="activity"></i> Biomarker Proteins (LFQ Intensities)</h3>
+                                <p class="m-0">Raw spectral intensities from proteomics assay</p>
+                            </div>
+                        </div>
+
+                        <div class="protein-grid" id="proteinFieldsContainer">
+                            <div class="text-center py-4 text-secondary">
+                                <div class="spinner-border spinner-border-sm text-info me-2"></div> Loading Biomarker Fields...
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-custom btn-primary-custom w-100 py-3 mt-2" style="font-size: 16px;">
+                            <i data-lucide="calculator"></i> Compute Biological Liver Age & SHAP
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Prediction Results Summary Card -->
+                <div class="card-custom" id="resultCard" style="display: none;">
+                    <div class="result-header">
+                        <h3 class="m-0 font-title fw-bold"><i data-lucide="check-circle" class="text-success me-2"></i> Result Summary</h3>
+                        <span class="badge-custom badge-normal" id="resultBadge">Normal Aging</span>
+                    </div>
+
+                    <div class="age-display-grid">
+                        <div class="age-box">
+                            <div class="age-val" id="resChronoAge">48.0</div>
+                            <div class="age-lbl">Chronological Age</div>
+                        </div>
+                        <div class="age-box highlight">
+                            <div class="age-val" id="resPredAge">42.5</div>
+                            <div class="age-lbl">Biological Liver Age</div>
+                        </div>
+                    </div>
+
+                    <div class="risk-banner-custom" id="riskBanner">
+                        <i data-lucide="info"></i>
+                        <span>Your liver tissue biological age is within expected clinical tolerance.</span>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn-custom btn-secondary-custom" id="btnDownloadReport">
+                            <i data-lucide="file-text"></i> Print / Download Clinical Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full-Width SHAP Explainable AI Section -->
+            <div class="card-custom shap-fullwidth-card" id="shapSection" style="display: none;">
+                <div class="card-header-custom d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 class="m-0"><i data-lucide="bar-chart-3" class="text-info me-2"></i> SHAP Biomarker Contributions (Years of Age Impact)</h3>
+                        <p class="m-0">Additive decomposition showing exact years accelerated (+) or protected (-)</p>
+                    </div>
+                </div>
+
+                <div class="shap-grid-layout">
+                    <!-- Horizontal Bar Chart -->
+                    <div class="chart-wrapper">
+                        <canvas id="shapChart"></canvas>
+                    </div>
+
+                    <!-- Ranked Biomarker Table -->
+                    <div class="shap-table-container">
+                        <table class="table-custom">
+                            <thead>
+                                <tr>
+                                    <th>Biomarker</th>
+                                    <th>Age Impact</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody id="shapTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: BATCH CSV PREDICTION -->
+        <section id="tab-batch" class="tab-pane">
+            <div class="card-header-custom mb-4">
+                <h3><i data-lucide="file-spreadsheet" class="text-info me-2"></i> Batch Cohort CSV Upload</h3>
+                <p>Process entire patient cohorts in seconds and export complete prediction summaries.</p>
+            </div>
+
+            <div class="card-custom">
+                <div class="upload-zone" onclick="document.getElementById('batchFileInput').click()">
+                    <i data-lucide="upload-cloud" class="upload-icon"></i>
+                    <h4 class="font-title fw-bold">Click or Drag & Drop Patient Cohort CSV Here</h4>
+                    <p class="text-secondary mt-1">Accepts CSV files with patient metadata and biomarker intensity columns</p>
+                    <input type="file" id="batchFileInput" accept=".csv" style="display: none;">
+                </div>
+
+                <div id="batchResultsContainer" style="display: none; margin-top: 30px;">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="font-title fw-bold m-0"><i data-lucide="table"></i> Batch Results (<span id="batchCount">0</span> Patients Processed)</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table-custom" id="batchTable">
+                            <thead>
+                                <tr>
+                                    <th>Patient</th>
+                                    <th>Gender</th>
+                                    <th>Chrono Age</th>
+                                    <th>Biological Age</th>
+                                    <th>Age Delta (Δ)</th>
+                                    <th>Risk Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="batchTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: PREDICTION HISTORY & DATABASE RECORDS -->
+        <section id="tab-history" class="tab-pane">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="font-title fw-bold m-0" style="font-size: 26px;"><i data-lucide="database" class="text-info me-2"></i> Patient Records Database (MySQL / Django ORM)</h2>
+                    <p class="text-secondary mt-1 mb-0">Search, filter, inspect, and export persisted patient prediction records.</p>
+                </div>
+                <div>
+                    <a href="/api/export-history" class="btn-custom btn-secondary-custom">
+                        <i data-lucide="download"></i> Export All to CSV
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-custom">
+                <div class="mb-4">
+                    <input type="text" id="historySearchInput" placeholder="🔍 Search patient name, risk category, or sex..." class="form-control-custom">
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table-custom">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Patient Name</th>
+                                <th>Sex</th>
+                                <th>DOB</th>
+                                <th>Chrono Age</th>
+                                <th>Predicted Bio Age</th>
+                                <th>Delta (Δ)</th>
+                                <th>Risk Status</th>
+                                <th>Date Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- App & Chart Scripts -->
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

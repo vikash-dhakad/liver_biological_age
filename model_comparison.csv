@@ -1,0 +1,8 @@
+rank,model,mae_mean,mae_std,rmse_mean,rmse_std,r2_mean,r2_std,train_time_ms,pred_time_ms
+1,Gradient Boosting (XGBoost Equivalent),8.53,1.00,10.39,1.46,0.5489,0.1055,134.86,0.04
+2,LASSO Regression,9.90,1.81,11.67,2.29,0.4377,0.1427,837.97,1.01
+3,ElasticNet Regression,11.29,1.29,13.41,1.49,0.2577,0.0928,996.30,0.69
+4,Linear Regression,11.38,1.39,13.26,1.45,0.2753,0.0750,701.06,0.62
+5,Ridge Regression,11.40,1.40,13.27,1.46,0.2745,0.0746,1415.62,0.99
+6,Support Vector Regression (SVR),11.55,1.46,13.69,1.77,0.2308,0.0917,985.41,0.49
+7,Random Forest Regressor,12.52,1.36,14.85,1.44,0.0928,0.0439,4.08,0.03

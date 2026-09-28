@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Heavy data files (not needed for deployment)
+merged_liver_proteomics_dataset.csv
+merged_liver_proteomics_dataset_step2_outlier_repaired.csv
+merged_liver_proteomics_dataset_step3_log2.csv
+merged_liver_proteomics_dataset_step4_scaled.csv
+merged_liver_proteomics_dataset_step5_encoded.csv
+merged_liver_proteomics_dataset_ml_ready.csv
+X_ml_ready.csv
+patient_data/
+
+# Analysis scripts (not needed in production)
+age_distribution_analysis.py
+dataset_overview.py
+gender_distribution_analysis.py
+investigate_outlier.py
+merge_patient_files.py
+missing_value_analysis.py
+protein_intensity_distribution.py
+protein_variability_analysis.py
+top_20_intensities.py
+zero_value_analysis.py
+step2_outlier_repair.py
+step3_log2_transform.py
+step4_feature_scaling.py
+step5_gender_encoding.py
+step6_integrity_validation.py
+
+# Database & Static artifacts
+backend/predictions.db
+liver_django/db.sqlite3
+liver_django/staticfiles/

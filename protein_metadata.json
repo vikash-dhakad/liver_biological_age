@@ -1,0 +1,162 @@
+[
+  {
+    "name": "ALB",
+    "full_name": "Albumin",
+    "unit": "g/dL",
+    "normal_low": 3.5,
+    "normal_high": 5.5,
+    "direction": "down"
+  },
+  {
+    "name": "ALT",
+    "full_name": "Alanine Aminotransferase",
+    "unit": "U/L",
+    "normal_low": 7,
+    "normal_high": 56,
+    "direction": "down"
+  },
+  {
+    "name": "AST",
+    "full_name": "Aspartate Aminotransferase",
+    "unit": "U/L",
+    "normal_low": 10,
+    "normal_high": 40,
+    "direction": "up"
+  },
+  {
+    "name": "GGT",
+    "full_name": "Gamma-Glutamyl Transferase",
+    "unit": "U/L",
+    "normal_low": 9,
+    "normal_high": 48,
+    "direction": "up"
+  },
+  {
+    "name": "ALP",
+    "full_name": "Alkaline Phosphatase",
+    "unit": "U/L",
+    "normal_low": 44,
+    "normal_high": 147,
+    "direction": "up"
+  },
+  {
+    "name": "APOE",
+    "full_name": "Apolipoprotein E",
+    "unit": "mg/dL",
+    "normal_low": 2.7,
+    "normal_high": 6.7,
+    "direction": "down"
+  },
+  {
+    "name": "APOC3",
+    "full_name": "Apolipoprotein C-III",
+    "unit": "mg/dL",
+    "normal_low": 5,
+    "normal_high": 18,
+    "direction": "up"
+  },
+  {
+    "name": "AFP",
+    "full_name": "Alpha-Fetoprotein",
+    "unit": "ng/mL",
+    "normal_low": 0,
+    "normal_high": 10,
+    "direction": "up"
+  },
+  {
+    "name": "FGA",
+    "full_name": "Fibrinogen Alpha",
+    "unit": "mg/dL",
+    "normal_low": 200,
+    "normal_high": 400,
+    "direction": "up"
+  },
+  {
+    "name": "SERPINC1",
+    "full_name": "Antithrombin III",
+    "unit": "%",
+    "normal_low": 80,
+    "normal_high": 120,
+    "direction": "down"
+  },
+  {
+    "name": "CRP",
+    "full_name": "C-Reactive Protein",
+    "unit": "mg/L",
+    "normal_low": 0,
+    "normal_high": 3,
+    "direction": "up"
+  },
+  {
+    "name": "TGFB1",
+    "full_name": "TGF-Beta 1",
+    "unit": "ng/mL",
+    "normal_low": 5,
+    "normal_high": 35,
+    "direction": "up"
+  },
+  {
+    "name": "IGF1",
+    "full_name": "Insulin-like Growth Factor 1",
+    "unit": "ng/mL",
+    "normal_low": 50,
+    "normal_high": 350,
+    "direction": "down"
+  },
+  {
+    "name": "GDF15",
+    "full_name": "Growth Differentiation Factor 15",
+    "unit": "pg/mL",
+    "normal_low": 200,
+    "normal_high": 1200,
+    "direction": "up"
+  },
+  {
+    "name": "SHBG",
+    "full_name": "Sex Hormone Binding Globulin",
+    "unit": "nmol/L",
+    "normal_low": 20,
+    "normal_high": 80,
+    "direction": "up"
+  },
+  {
+    "name": "FERRITIN",
+    "full_name": "Ferritin",
+    "unit": "ng/mL",
+    "normal_low": 20,
+    "normal_high": 250,
+    "direction": "up"
+  },
+  {
+    "name": "CYP3A4",
+    "full_name": "CYP3A4 Activity Index",
+    "unit": "index",
+    "normal_low": 50,
+    "normal_high": 100,
+    "direction": "down"
+  },
+  {
+    "name": "SOD2",
+    "full_name": "Superoxide Dismutase 2",
+    "unit": "U/mL",
+    "normal_low": 90,
+    "normal_high": 200,
+    "direction": "down"
+  },
+  {
+    "name": "HMGB1",
+    "full_name": "HMGB1 Protein",
+    "unit": "ng/mL",
+    "normal_low": 1,
+    "normal_high": 10,
+    "direction": "up"
+  },
+  {
+    "name": "PCNA",
+    "full_name": "Proliferating Cell Nuclear Antigen",
+    "unit": "ng/mL",
+    "normal_low": 2,
+    "normal_high": 10,
+    "direction": "down"
+  }
+]

@@ -1,0 +1,4 @@
+metric,mean,std
+MAE (years),11.12,1.52
+RMSE (years),13.20,1.42
+R2 Score,0.2805,0.0803

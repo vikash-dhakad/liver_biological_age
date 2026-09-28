@@ -1,0 +1,36 @@
+============================================================
+  LIVER BIOLOGICAL AGE PREDICTOR — MODEL REPORT
+============================================================
+
+Training samples: 1600
+Test samples:     400
+Features:         20
+
+Train MAE:  3.67 years
+Test MAE:   3.65 years
+Test RMSE:  4.63 years
+Test R²:    0.9424
+Test r:     0.9723
+
+Feature Importance Ranking:
+--------------------------------------------------
+   1. GDF15         |w|=2.3202  coef=+2.3202  ↑
+   2. HMGB1         |w|=1.6863  coef=+1.6863  ↑
+   3. IGF1          |w|=1.6583  coef=-1.6583  ↓
+   4. CYP3A4        |w|=1.5519  coef=-1.5519  ↓
+   5. ALB           |w|=1.4440  coef=-1.4440  ↓
+   6. PCNA          |w|=1.4416  coef=-1.4416  ↓
+   7. FGA           |w|=1.3809  coef=+1.3809  ↑
+   8. SOD2          |w|=1.2806  coef=-1.2806  ↓
+   9. TGFB1         |w|=1.2690  coef=+1.2690  ↑
+  10. CRP           |w|=1.2270  coef=+1.2270  ↑
+  11. GGT           |w|=1.2022  coef=+1.2022  ↑
+  12. SHBG          |w|=1.1679  coef=+1.1679  ↑
+  13. FERRITIN      |w|=1.0398  coef=+1.0398  ↑
+  14. APOC3         |w|=0.9578  coef=+0.9578  ↑
+  15. ALP           |w|=0.9391  coef=+0.9391  ↑
+  16. SERPINC1      |w|=0.8568  coef=-0.8568  ↓
+  17. APOE          |w|=0.8426  coef=-0.8426  ↓
+  18. AFP           |w|=0.7317  coef=+0.7317  ↑
+  19. ALT           |w|=0.6878  coef=-0.6878  ↓
+  20. AST           |w|=0.4470  coef=+0.4470  ↑

@@ -1,0 +1,11 @@
+protein,top_50_count,top_100_count,top_250_count,top_500_count,top_1000_count,stable_across_all_thresholds
+DNAJB9,5/5,5/5,5/5,5/5,5/5,YES
+PRKAA2,2/5,2/5,5/5,5/5,5/5,YES
+ACP3,5/5,5/5,5/5,5/5,5/5,YES
+UQCRH,3/5,4/5,5/5,5/5,5/5,YES
+ACTN4,5/5,5/5,5/5,5/5,5/5,YES
+SIRT3,0/5,1/5,3/5,4/5,5/5,NO
+ENO2,1/5,3/5,4/5,4/5,5/5,YES
+FAM151A,4/5,5/5,5/5,5/5,5/5,YES
+IGLV3-21,2/5,4/5,5/5,5/5,5/5,YES
+KLK3,5/5,5/5,5/5,5/5,5/5,YES
