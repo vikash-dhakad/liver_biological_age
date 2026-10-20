@@ -5,17 +5,18 @@
 [![Django REST Framework](https://img.shields.io/badge/DRF-API-red?logo=django)](https://www.django-rest-framework.org/)
 [![Scikit-Learn](https://img.shields.io/badge/ML-Gradient%20Boosting-orange?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![SHAP Explainability](https://img.shields.io/badge/Explainability-SHAP%20Values-brightgreen)](https://shap.readthedocs.io/)
-[![Deployment](https://img.shields.io/badge/Deploy-Render%20Live-46E3B7?logo=render&logoColor=white)](https://liver-biological-age-ai.onrender.com)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-success?style=for-the-badge&logo=github)](https://vikash-dhakad.github.io/liver_biological_age/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
 ## 🌐 Live Application Link
 
-### 🚀 **[Click Here to Open Live Application](https://liver-biological-age-ai.onrender.com)**
+### 🚀 **[Click Here to Open Live Application](https://vikash-dhakad.github.io/liver_biological_age/)**
 
-> **Live Deployment URL:** `https://liver-biological-age-ai.onrender.com`  
-> *Deployed on Render cloud with automated CI/CD from this repository.*
+> **Official Live URL:** [`https://vikash-dhakad.github.io/liver_biological_age/`](https://vikash-dhakad.github.io/liver_biological_age/)  
+> *Active & Running directly on GitHub Pages!*
+
 
 ---
 
