@@ -41,7 +41,6 @@ class ScaledPreprocessor:
                     raw_val = float(val) if val is not None and str(val).strip() != '' else 0.0
                 except (ValueError, TypeError):
                     raw_val = 0.0
-
                 if abs(raw_val) < 20.0 and raw_val != 0.0:
                     z_val = raw_val
                 elif raw_val > 0:

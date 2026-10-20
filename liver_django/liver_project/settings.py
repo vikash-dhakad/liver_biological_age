@@ -17,6 +17,7 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.onrender.com',
+    'https://*.up.railway.app',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
 ]
@@ -70,6 +71,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'liver_project.wsgi.application'
 
 # Database Configuration (MySQL Support with smart SQLite Fallback)
+# To use MySQL: Set environment variable USE_MYSQL=True or configure below
 USE_MYSQL = os.environ.get('USE_MYSQL', 'False').lower() in ('true', '1', 'yes')
 
 if USE_MYSQL:
@@ -118,7 +120,7 @@ STATICFILES_DIRS = [
 ]
 
 # WhiteNoise storage for ultra-fast static file delivery & compression
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

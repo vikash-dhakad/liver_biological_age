@@ -35,6 +35,12 @@ class HealthCheckView(APIView):
         })
 
 
+TOP_15_BIOMARKERS = [
+    "DNAJB9", "ACP3", "UQCRH", "ACTN4", "PRKAA2",
+    "ALG14", "ENO2", "MED23", "IGLV3-21", "RAP2B",
+    "FAM151A", "CFHR5", "C6orf47", "TPM3", "FBXL17"
+]
+
 @method_decorator(csrf_exempt, name='dispatch')
 class FeatureSchemaView(APIView):
     authentication_classes = []
@@ -42,7 +48,9 @@ class FeatureSchemaView(APIView):
 
     def get(self, request):
         ml_service = MLService.get_instance()
-        proteins = [f for f in ml_service.feature_names if f != "gender"]
+        # Default to Top 15 most impactful biomarkers; support ?all=true if full panel needed
+        show_all = request.GET.get('all', 'false').lower() in ('true', '1')
+        proteins = [f for f in ml_service.feature_names if f != "gender"] if show_all else TOP_15_BIOMARKERS
         return Response({
             "success": True,
             "proteins": proteins,

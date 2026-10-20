@@ -2,7 +2,7 @@
  * Liver Biological Age Predictor - Primary Frontend Logic
  * ========================================================
  * Tab switching, dynamic form rendering from /api/feature-schema,
- * single & batch predictions, history search/delete, theme toggling.
+ * single predictions, history search/delete, theme toggling.
  */
 
 let featureSchema = [];
@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     fetchFeatureSchema();
     initFormSubmit();
-    initBatchUpload();
     initHistorySearch();
 });
 
@@ -72,7 +71,7 @@ async function fetchFeatureSchema() {
 
         if (data.success) {
             featureSchema = data.proteins;
-            renderProteinFields(featureSchema);
+            renderProteinFields(featureSchema, data.metadata || {});
         } else {
             if (container) container.innerHTML = '<p class="error">Failed to load biomarker schema.</p>';
         }
@@ -81,16 +80,21 @@ async function fetchFeatureSchema() {
     }
 }
 
-function renderProteinFields(proteins) {
+function renderProteinFields(proteins, metadata = {}) {
     const container = document.getElementById('proteinFieldsContainer');
     if (!container) return;
     let html = '';
 
     proteins.forEach(p => {
+        const meta = metadata[p] || {};
+        const cat = meta.category || meta.full_name || 'Key Biomarker';
         html += `
-            <div style="background: rgba(15, 23, 42, 0.4); padding: 8px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
-                <label for="prot_${p}" style="font-size: 11px; font-weight: 700; color: var(--accent-blue); display: block; margin-bottom: 4px;">${p}</label>
-                <input type="number" step="any" id="prot_${p}" name="${p}" placeholder="0.0" class="form-control-custom" style="padding: 6px 8px; font-size: 12px;" value="0">
+            <div class="protein-field-card">
+                <div class="protein-field-header">
+                    <label for="prot_${p}" class="protein-name-label">${p}</label>
+                    <span class="protein-category-badge" title="${cat}">${cat}</span>
+                </div>
+                <input type="number" step="any" id="prot_${p}" name="${p}" placeholder="0.0" class="form-control-custom protein-input-field" value="0">
             </div>
         `;
     });
@@ -104,22 +108,29 @@ function autoFillSampleData() {
     document.getElementById('gender').value = "Male";
     document.getElementById('dob').value = "1978-05-15"; // Chronological Age ~48
 
-    // Pre-fill top sample protein intensities
+    // Realistic mass spectrometry LFQ baseline intensities for top 15 biomarkers
     const sampleValues = {
-        "DNAJB9": 145200.0,
-        "PRKAA2": 85000.0,
-        "ACP3": 32000.0,
-        "UQCRH": 112000.0,
-        "SIRT3": 45000.0,
-        "ACTN4": 98000.0,
-        "ENO2": 67000.0,
-        "ALG14": 54000.0
+        "DNAJB9": 40500000.0,
+        "ACP3": 25.0,
+        "UQCRH": 48000000.0,
+        "ACTN4": 1000000000.0,
+        "PRKAA2": 3200.0,
+        "ALG14": 19500000.0,
+        "ENO2": 10000000.0,
+        "MED23": 12500000.0,
+        "IGLV3-21": 17000000.0,
+        "RAP2B": 13500000.0,
+        "FAM151A": 28000.0,
+        "CFHR5": 66000000.0,
+        "C6orf47": 12400000.0,
+        "TPM3": 350000000.0,
+        "FBXL17": 2200.0
     };
 
     featureSchema.forEach(p => {
         const input = document.getElementById(`prot_${p}`);
         if (input) {
-            input.value = sampleValues[p] || (Math.random() * 50000 + 10000).toFixed(1);
+            input.value = sampleValues[p] !== undefined ? sampleValues[p] : 0;
         }
     });
 }
@@ -144,7 +155,7 @@ function initFormSubmit() {
         });
 
         try {
-            const apiUrl = window.location.origin + '/api/predict/';
+            const apiUrl = window.location.origin + '/api/predict';
             const res = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -157,16 +168,14 @@ function initFormSubmit() {
             });
 
             const data = await res.json();
-            if (data.data) {
+            if (data.success) {
                 displayPredictionResult(data.data);
-            } else if (data.predicted_biological_age || data.predicted_age) {
-                displayPredictionResult(data);
             } else {
-                alert("Prediction Error: " + (data.error || data.message || "Server processing failed."));
+                alert("Prediction Error: " + (data.error || "Server processing failed."));
             }
         } catch (err) {
             console.error("Predict Error:", err);
-            alert("Connection Notice: " + (err.message || "Failed to reach server. Please ensure Django server is running."));
+            alert("Connection Notice: " + (err.message || "Failed to reach server. Please ensure python backend/server.py is running."));
         }
     });
 }
@@ -304,68 +313,3 @@ async function deleteHistoryRecord(id) {
         alert("Failed to delete record.");
     }
 }
-
-// Batch Upload Handler
-function initBatchUpload() {
-    const fileInput = document.getElementById('batchFileInput');
-    if (!fileInput) return;
-
-    fileInput.addEventListener('change', async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-
-        const formData = new FormData();
-        formData.append('file', file);
-
-        try {
-            const res = await fetch(window.location.origin + '/api/predict/batch/', {
-                method: 'POST',
-                body: formData
-            });
-
-            const data = await res.json();
-            if (data.success && data.results) {
-                renderBatchResults(data.results);
-            } else {
-                alert("Batch Upload Error: " + (data.error || "Failed to process CSV cohort."));
-            }
-        } catch (err) {
-            alert("Connection error uploading batch file.");
-        }
-    });
-}
-
-function renderBatchResults(rows) {
-    const container = document.getElementById('batchResultsContainer');
-    const tbody = document.getElementById('batchTableBody');
-    const countEl = document.getElementById('batchCount');
-    if (!container || !tbody) return;
-
-    countEl.innerText = rows.length;
-    container.style.display = 'block';
-
-    let html = '';
-    rows.forEach(r => {
-        let badgeClass = 'badge-normal';
-        if (r.risk_category.toLowerCase().includes('healthy') || r.risk_category.toLowerCase().includes('young') || r.age_difference <= -3.0) {
-            badgeClass = 'badge-healthy';
-        } else if (r.risk_category.toLowerCase().includes('accelerated') || r.age_difference >= 4.0) {
-            badgeClass = 'badge-accelerated';
-        }
-
-        html += `
-            <tr>
-                <td><strong>${r.patient_name}</strong></td>
-                <td><span style="text-transform: capitalize;">${r.gender}</span></td>
-                <td>${r.chronological_age.toFixed(1)} yrs</td>
-                <td style="color: var(--accent-blue); font-weight: 700;">${r.predicted_biological_age.toFixed(1)} yrs</td>
-                <td><strong style="color: ${r.age_difference > 0 ? '#f43f5e' : '#10b981'};">${r.age_difference > 0 ? '+' : ''}${r.age_difference.toFixed(1)} yrs</strong></td>
-                <td><span class="badge-custom ${badgeClass}">${r.risk_category}</span></td>
-            </tr>
-        `;
-    });
-
-    tbody.innerHTML = html;
-    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-

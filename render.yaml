@@ -4,11 +4,11 @@ services:
     env: python
     region: oregon
     plan: free
-    buildCommand: "./build.sh"
-    startCommand: "cd liver_django && gunicorn liver_project.wsgi:application --bind 0.0.0.0:$PORT"
+    buildCommand: "bash ./build.sh"
+    startCommand: "cd liver_django && gunicorn liver_project.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
     envVars:
       - key: PYTHON_VERSION
-        value: 3.12.0
+        value: 3.11.9
       - key: DEBUG
         value: "False"
       - key: SECRET_KEY

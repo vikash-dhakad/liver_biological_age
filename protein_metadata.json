@@ -1,5 +1,5 @@
-[
-  {
+{
+  "ALB": {
     "name": "ALB",
     "full_name": "Albumin",
     "unit": "g/dL",
@@ -7,7 +7,7 @@
     "normal_high": 5.5,
     "direction": "down"
   },
-  {
+  "ALT": {
     "name": "ALT",
     "full_name": "Alanine Aminotransferase",
     "unit": "U/L",
@@ -15,7 +15,7 @@
     "normal_high": 56,
     "direction": "down"
   },
-  {
+  "AST": {
     "name": "AST",
     "full_name": "Aspartate Aminotransferase",
     "unit": "U/L",
@@ -23,7 +23,7 @@
     "normal_high": 40,
     "direction": "up"
   },
-  {
+  "GGT": {
     "name": "GGT",
     "full_name": "Gamma-Glutamyl Transferase",
     "unit": "U/L",
@@ -31,7 +31,7 @@
     "normal_high": 48,
     "direction": "up"
   },
-  {
+  "ALP": {
     "name": "ALP",
     "full_name": "Alkaline Phosphatase",
     "unit": "U/L",
@@ -39,7 +39,7 @@
     "normal_high": 147,
     "direction": "up"
   },
-  {
+  "APOE": {
     "name": "APOE",
     "full_name": "Apolipoprotein E",
     "unit": "mg/dL",
@@ -47,7 +47,7 @@
     "normal_high": 6.7,
     "direction": "down"
   },
-  {
+  "APOC3": {
     "name": "APOC3",
     "full_name": "Apolipoprotein C-III",
     "unit": "mg/dL",
@@ -55,7 +55,7 @@
     "normal_high": 18,
     "direction": "up"
   },
-  {
+  "AFP": {
     "name": "AFP",
     "full_name": "Alpha-Fetoprotein",
     "unit": "ng/mL",
@@ -63,7 +63,7 @@
     "normal_high": 10,
     "direction": "up"
   },
-  {
+  "FGA": {
     "name": "FGA",
     "full_name": "Fibrinogen Alpha",
     "unit": "mg/dL",
@@ -71,7 +71,7 @@
     "normal_high": 400,
     "direction": "up"
   },
-  {
+  "SERPINC1": {
     "name": "SERPINC1",
     "full_name": "Antithrombin III",
     "unit": "%",
@@ -79,7 +79,7 @@
     "normal_high": 120,
     "direction": "down"
   },
-  {
+  "CRP": {
     "name": "CRP",
     "full_name": "C-Reactive Protein",
     "unit": "mg/L",
@@ -87,7 +87,7 @@
     "normal_high": 3,
     "direction": "up"
   },
-  {
+  "TGFB1": {
     "name": "TGFB1",
     "full_name": "TGF-Beta 1",
     "unit": "ng/mL",
@@ -95,7 +95,7 @@
     "normal_high": 35,
     "direction": "up"
   },
-  {
+  "IGF1": {
     "name": "IGF1",
     "full_name": "Insulin-like Growth Factor 1",
     "unit": "ng/mL",
@@ -103,7 +103,7 @@
     "normal_high": 350,
     "direction": "down"
   },
-  {
+  "GDF15": {
     "name": "GDF15",
     "full_name": "Growth Differentiation Factor 15",
     "unit": "pg/mL",
@@ -111,7 +111,7 @@
     "normal_high": 1200,
     "direction": "up"
   },
-  {
+  "SHBG": {
     "name": "SHBG",
     "full_name": "Sex Hormone Binding Globulin",
     "unit": "nmol/L",
@@ -119,7 +119,7 @@
     "normal_high": 80,
     "direction": "up"
   },
-  {
+  "FERRITIN": {
     "name": "FERRITIN",
     "full_name": "Ferritin",
     "unit": "ng/mL",
@@ -127,7 +127,7 @@
     "normal_high": 250,
     "direction": "up"
   },
-  {
+  "CYP3A4": {
     "name": "CYP3A4",
     "full_name": "CYP3A4 Activity Index",
     "unit": "index",
@@ -135,7 +135,7 @@
     "normal_high": 100,
     "direction": "down"
   },
-  {
+  "SOD2": {
     "name": "SOD2",
     "full_name": "Superoxide Dismutase 2",
     "unit": "U/mL",
@@ -143,7 +143,7 @@
     "normal_high": 200,
     "direction": "down"
   },
-  {
+  "HMGB1": {
     "name": "HMGB1",
     "full_name": "HMGB1 Protein",
     "unit": "ng/mL",
@@ -151,12 +151,117 @@
     "normal_high": 10,
     "direction": "up"
   },
-  {
+  "PCNA": {
     "name": "PCNA",
     "full_name": "Proliferating Cell Nuclear Antigen",
     "unit": "ng/mL",
     "normal_low": 2,
     "normal_high": 10,
     "direction": "down"
+  },
+  "DNAJB9": {
+    "name": "DNAJB9",
+    "full_name": "DnaJ/Hsp40 ER Co-Chaperone",
+    "category": "Protein Homeostasis / ER Stress",
+    "biological_role": "Primary molecular chaperone linked to ER stress and cellular senescence",
+    "evidence": "Strongly supported by literature: Marker of endoplasmic reticulum stress, unfolded protein response (UPR), and cellular senescence."
+  },
+  "ACP3": {
+    "name": "ACP3",
+    "full_name": "Acid Phosphatase 3",
+    "category": "Cell Signaling / Phosphatase",
+    "biological_role": "Acid phosphatase enzyme involved in cell signaling pathways",
+    "evidence": "High SHAP contribution (1.35 yrs); hydrolyzes phosphate esters in hepatic tissue."
+  },
+  "UQCRH": {
+    "name": "UQCRH",
+    "full_name": "Complex III Subunit (ETC)",
+    "category": "Mitochondrial Function",
+    "biological_role": "Complex III ubiquinol-cytochrome c reductase subunit",
+    "evidence": "Supported by literature: Core electron transport chain protein; alterations reflect age-related oxidative phosphorylation decay."
+  },
+  "ACTN4": {
+    "name": "ACTN4",
+    "full_name": "Alpha-Actinin-4",
+    "category": "Cytoskeleton & Motility",
+    "biological_role": "Alpha-actinin-4 actin-crosslinking protein",
+    "evidence": "Supported by literature: Regulates cellular motility and cytoskeletal integrity in liver tissue."
+  },
+  "PRKAA2": {
+    "name": "PRKAA2",
+    "full_name": "AMPK Alpha-2 Catalytic Subunit",
+    "category": "Energy Metabolism & Longevity",
+    "biological_role": "AMPK master energy sensor and metabolic regulator",
+    "evidence": "Well-established in literature: Master regulator of cellular ATP/AMP ratio, autophagy, and metabolic longevity pathways."
+  },
+  "ALG14": {
+    "name": "ALG14",
+    "full_name": "UDP-GlcNAc Transferase",
+    "category": "Protein Homeostasis / ER Stress",
+    "biological_role": "UDP-N-acetylglucosamine transferase subunit (N-glycosylation)",
+    "evidence": "Supported by literature: Essential for endoplasmic reticulum N-linked protein glycosylation."
+  },
+  "ENO2": {
+    "name": "ENO2",
+    "full_name": "Enolase 2 (Glycolysis)",
+    "category": "Energy Metabolism",
+    "biological_role": "Enolase 2 glycolytic enzyme (2-phosphoglycerate conversion)",
+    "evidence": "Supported by literature: Catalyzes glycolysis step; age-related shift toward glycolytic metabolism in aging liver cells."
+  },
+  "MED23": {
+    "name": "MED23",
+    "full_name": "Mediator Complex Subunit 23",
+    "category": "Transcriptional Regulation",
+    "biological_role": "Transcriptional coactivator regulating gene expression programs",
+    "evidence": "Identified in 100% of CV folds; modulates aging-related metabolic gene transcription."
+  },
+  "IGLV3-21": {
+    "name": "IGLV3-21",
+    "full_name": "Immunoglobulin Lambda Subunit",
+    "category": "Immune Response / Inflammaging",
+    "biological_role": "Immunoglobulin lambda variable region subunit",
+    "evidence": "Supported by literature: Component of immune repertoire; reflects age-associated hepatic immunosenescence and inflammaging."
+  },
+  "RAP2B": {
+    "name": "RAP2B",
+    "full_name": "Ras-Related Protein Rap-2b",
+    "category": "Signal Transduction",
+    "biological_role": "Small GTPase modulating intracellular signaling",
+    "evidence": "100% fold selection stability (5/5); core boosting ensemble feature."
+  },
+  "FAM151A": {
+    "name": "FAM151A",
+    "full_name": "Refilin Family Protein A",
+    "category": "Cell Membrane Integrity",
+    "biological_role": "Membrane-associated refilin structural component",
+    "evidence": "Rank 1 consensus biomarker across 100% of folds (5/5)."
+  },
+  "CFHR5": {
+    "name": "CFHR5",
+    "full_name": "Complement Factor H-Related 5",
+    "category": "Immune System & Complement",
+    "biological_role": "Regulates complement cascade activation and immune clearance",
+    "evidence": "100% fold selection stability; modulates hepatic complement homeostasis."
+  },
+  "C6orf47": {
+    "name": "C6orf47",
+    "full_name": "MHC Class III Associated Protein",
+    "category": "Immune Response",
+    "biological_role": "Chromosome 6 open reading frame 47 (MHC class III locus)",
+    "evidence": "Supported by literature: Located in major histocompatibility complex locus linked to immune regulation."
+  },
+  "TPM3": {
+    "name": "TPM3",
+    "full_name": "Tropomyosin Alpha-3",
+    "category": "Cytoskeleton & Actin Stability",
+    "biological_role": "Stabilizes actin filaments and cellular structure",
+    "evidence": "100% fold selection stability; regulates hepatocyte structural elasticity."
+  },
+  "FBXL17": {
+    "name": "FBXL17",
+    "full_name": "F-Box / LRR-Repeat Protein 17",
+    "category": "Protein Turnover / Ubiquitination",
+    "biological_role": "Substrate recognition component of ubiquitin ligase complexes",
+    "evidence": "100% fold selection stability; regulates targeted proteasomal protein degradation."
   }
-]
+}

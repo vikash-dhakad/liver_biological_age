@@ -49,7 +49,9 @@ step4_feature_scaling.py
 step5_gender_encoding.py
 step6_integrity_validation.py
 
-# Database & Static artifacts
+# Database (will be created fresh on server)
 backend/predictions.db
-liver_django/db.sqlite3
+*.sqlite3
+staticfiles/
 liver_django/staticfiles/
+

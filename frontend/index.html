@@ -8,7 +8,7 @@
     <!-- Google Fonts & Lucide Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Chart.js -->
@@ -33,7 +33,6 @@
             <ul class="nav-links">
                 <li class="nav-item active" data-tab="home"><i data-lucide="home"></i> Home</li>
                 <li class="nav-item" data-tab="predict"><i data-lucide="dna"></i> Single Prediction</li>
-                <li class="nav-item" data-tab="batch"><i data-lucide="file-spreadsheet"></i> Batch CSV</li>
                 <li class="nav-item" data-tab="history"><i data-lucide="history"></i> Database Records</li>
             </ul>
 
@@ -60,16 +59,13 @@
                 <div class="hero-badge">
                     <i data-lucide="sparkles"></i> High-Precision Proteomic Biological Clock
                 </div>
-                <h1 class="hero-title">Predict Human Liver Biological Age via Proteomics</h1>
-                <p class="hero-subtitle">
-                    An advanced Machine Learning and Explainable AI platform powered by Gradient Boosting, SHAP analysis, and Django REST Framework. Quantifies organ aging delta from 50 targeted biomarker proteins.
-                </p>
+                <h1 class="hero-title" style="margin-bottom: 30px;">Predict Human Liver Biological Age via Proteomics</h1>
                 <div class="hero-buttons">
                     <button class="btn-custom btn-primary-custom" style="padding: 14px 28px; font-size: 15px;" onclick="switchTab('predict')">
                         <i data-lucide="cpu"></i> Run Single Patient Analysis
                     </button>
-                    <button class="btn-custom btn-secondary-custom" style="padding: 14px 28px; font-size: 15px;" onclick="switchTab('batch')">
-                        <i data-lucide="upload-cloud"></i> Batch Upload CSV
+                    <button class="btn-custom btn-secondary-custom" style="padding: 14px 28px; font-size: 15px;" onclick="switchTab('history')">
+                        <i data-lucide="history"></i> View Prediction History
                     </button>
                 </div>
             </div>
@@ -85,11 +81,6 @@
                     <div class="feature-icon"><i data-lucide="eye"></i></div>
                     <h3>SHAP Explainable AI</h3>
                     <p>Provides exact, additive feature contributions showing which proteins accelerate or decelerate biological tissue aging.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i data-lucide="database"></i></div>
-                    <h3>MySQL & Django ORM</h3>
-                    <p>Production-grade relational database architecture with automated schema migrations and Django Admin interface.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i data-lucide="file-check"></i></div>
@@ -141,8 +132,8 @@
 
                         <div class="card-header-custom d-flex justify-content-between align-items-center">
                             <div>
-                                <h3 class="m-0"><i data-lucide="activity"></i> Biomarker Proteins (LFQ Intensities)</h3>
-                                <p class="m-0">Raw spectral intensities from proteomics assay</p>
+                                <h3 class="m-0"><i data-lucide="activity"></i> Biomarker Proteins (Top 15 Key LFQ Intensities)</h3>
+                                <p class="m-0">Core high-impact proteomic panel with validated SHAP importance & fold stability</p>
                             </div>
                         </div>
 
@@ -221,45 +212,7 @@
             </div>
         </section>
 
-        <!-- TAB 3: BATCH CSV PREDICTION -->
-        <section id="tab-batch" class="tab-pane">
-            <div class="card-header-custom mb-4">
-                <h3><i data-lucide="file-spreadsheet" class="text-info me-2"></i> Batch Cohort CSV Upload</h3>
-                <p>Process entire patient cohorts in seconds and export complete prediction summaries.</p>
-            </div>
-
-            <div class="card-custom">
-                <div class="upload-zone" onclick="document.getElementById('batchFileInput').click()">
-                    <i data-lucide="upload-cloud" class="upload-icon"></i>
-                    <h4 class="font-title fw-bold">Click or Drag & Drop Patient Cohort CSV Here</h4>
-                    <p class="text-secondary mt-1">Accepts CSV files with patient metadata and biomarker intensity columns</p>
-                    <input type="file" id="batchFileInput" accept=".csv" style="display: none;">
-                </div>
-
-                <div id="batchResultsContainer" style="display: none; margin-top: 30px;">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="font-title fw-bold m-0"><i data-lucide="table"></i> Batch Results (<span id="batchCount">0</span> Patients Processed)</h4>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table-custom" id="batchTable">
-                            <thead>
-                                <tr>
-                                    <th>Patient</th>
-                                    <th>Gender</th>
-                                    <th>Chrono Age</th>
-                                    <th>Biological Age</th>
-                                    <th>Age Delta (Δ)</th>
-                                    <th>Risk Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="batchTableBody"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TAB 4: PREDICTION HISTORY & DATABASE RECORDS -->
+        <!-- TAB 3: PREDICTION HISTORY & DATABASE RECORDS -->
         <section id="tab-history" class="tab-pane">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
